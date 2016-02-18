@@ -1,24 +1,23 @@
 function [h_estim]=irs(X)
-    % % Simulation of fBm
-    % hurst = 0.6;
-    % n = 1000;
-    % boucle=1000;
-    % h_estim = zeros(boucle,1);
-    % for k = 1:boucle
-    % X = wfbm(hurst, n);
-
-    % IRS
+    % % function to estimate hurst exponent of fractional Brownian motion
+    % 
+    % X: X is a fractional Brownian motion
+    %
+    % example: X = wfbm(0.6, 1000)
+    %
+    % h_estim is the value of the estimation of hurst exponent
+    
     L = 1; % Ordre 1
+    n = 1000;
     Delta_2_x = diff(X,L);
     Y = zeros(n-2,1);
+    
     for i = 1:length(Delta_2_x)-1
         Y(i) = abs(Delta_2_x(i)+Delta_2_x(i+1))/(abs(Delta_2_x(i))+abs(Delta_2_x(i+1)));
     end
 
     IRS = mean(Y);
-    h_estim(k) = fsolve(@(h)toSolve(IRS,h),0.6);
-end
-
+    h_estim = fsolve(@(h)toSolve(IRS,h),0.6);
 end
 
 function [z] = toSolve(IRS,h)
