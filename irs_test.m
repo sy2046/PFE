@@ -17,7 +17,7 @@ end
 
 % Plot histogram
 n_bins = 20; 
-histogram(hurst_esti,n_bins); 
+histogram(hurst_esti,n_bins, 'Normalization', 'probability'); 
 title('Estimating the Hurst Exponent with IRS Method ')
 xlabel('True value of the parameter H = 0.6')
 
