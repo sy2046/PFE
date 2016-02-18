@@ -17,16 +17,20 @@ end
 IRS = mean(Y);
 h_estim(k) = fsolve(@(h)toSolve(IRS,h),0.6);
 end
-histogram(h_estim,'Normalization','probability');
+hh=histogram(h_estim);
 ylabel('Densit¨¦ de prob');
 title('Distribution de param¨¨tre Hurst par IRS');
+%scf();
 end
 
 function [z] = toSolve(IRS,h)
-n=1000; %fois de simulation
+n=1000;
+
+% lambda_h
 ro = 2^(2*h-1)-1;
 %ro = (-3^(2*h)+2^(2*h+2)-7)/(8-2^(2*h+1));
-lambda_h = 1/pi*acos(-ro)+1/pi*sqrt((1+ro)/(1-ro))*log(2/(1+ro)); % lambda_h
+lambda_h = 1/pi*acos(-ro)+1/pi*sqrt((1+ro)/(1-ro))*log(2/(1+ro));
+
 % IRS - lambda_h
 z = sqrt(n)*(IRS - lambda_h);
 end
