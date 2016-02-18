@@ -14,13 +14,12 @@ Y = zeros(n-2,1);
 for i = 1:length(Delta_2_x)-1
     Y(i) = abs(Delta_2_x(i)+Delta_2_x(i+1))/(abs(Delta_2_x(i))+abs(Delta_2_x(i+1)));
 end
-
 IRS = mean(Y);
 h_estim(k) = fsolve(@(h)toSolve(IRS,h),0.6);
 end
 hh=histogram(h_estim);
-ylabel('prob');
-title('distribution de CLT');
+ylabel('Densit¨¦ de prob');
+title('Distribution de param¨¨tre Hurst par IRS');
 %scf();
 end
 
