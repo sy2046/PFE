@@ -1,4 +1,3 @@
-
 % Estimation of Hurst exponent with wavelet methods
 
 % Generate fBm with H=0.6
@@ -16,8 +15,12 @@ end
 
 % Plot histogram
 n_bins = 21;
-figure(4);histogram(Hest(:,2),n_bins);
+
+% Hest(:,2) is the result of method 2(wavelet method) of wfbmesti function  
+histogram(Hest(:,2),n_bins); 
 title('Estimating the Hurst Exponent with Wavelet Method ')
 xlabel('True value of the parameter H = 0.6')
+
+% Results
 m1 = mean(Hest(:,2));
 v1 = var(Hest(:,2));
