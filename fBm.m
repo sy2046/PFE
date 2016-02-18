@@ -1,4 +1,5 @@
 % 1. Simulation of fBm with wavelet method
+% anji is a pig
 
 % Set the sample length 
 lg = 2^15; 
