@@ -1,3 +1,4 @@
+% Simulation de mBf avec Wood&Chan
 n = 500;  % les points de grille
 H = 0.7; % param¨¨tre de Hurst
 r = nan(n+1,1);
@@ -9,18 +10,20 @@ r = [r; r(end-1:-1:2)]; % premi¨¨re ligne de matrice circulante
 lambda = real(fft(r))/(2*n); % valeurs propres
 W = fft(sqrt(lambda).*complex(randn(2*n,1),randn(2*n,1)));
 W = n^(-H)*cumsum(real(W(1:n+1))); % redimensionner
-% plot((0:n)/n,W);
+
+% dW
 deltaW = zeros(n,1);
 for j = 1:n
     deltaW(j)=W(j+1)-W(j);
 end
-x = 20;
+
+% Calculer les prix des actions
+
 T = 0.1;
-%T = 500;
-R = 0.05;
+R = 0.05; % taux sans risque
 deltaT = T/n;
-sigma = 0.3;
-S0 = x;
+sigma = 0.3; % volatilit¨¦
+S0 = 20;
 S = zeros(n,1);
 S(1) = S0;
 S(2)=S(1)*exp((R-(sigma^2)/2)*deltaT+sigma*deltaW(1));

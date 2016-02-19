@@ -1,4 +1,4 @@
-% Estimation of Hurst exponent with wavelet methods
+% Estimation of Hurst exponent with wavelet method
 
 % Generate fBm with H=0.6
 rng default;
