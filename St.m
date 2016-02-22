@@ -33,7 +33,7 @@ function [S]=St(H,S0,R,sigma)
     T = 1;
     S = zeros(n,1);
     S(1) = S0;
-    for t = 2:T*n
-        S(t)=S(1)*exp((R-(sigma^2)/2)*t*(T/n) + sigma*W(t));
+    for t = 2:n
+        S(t)=S(1)*exp(sigma*W(t)+R*t*(T/n)-(sigma^2)/2*(t*(T/n))^(2*H));
     end
 end
