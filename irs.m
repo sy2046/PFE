@@ -1,5 +1,5 @@
 function [h_estim]=irs(X)
-    % % function to estimate hurst exponent of fractional Brownian motion
+    % Function to estimate hurst exponent of fractional Brownian motion
     % 
     % X: X is a fractional Brownian motion
     %
