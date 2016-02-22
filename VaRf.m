@@ -23,7 +23,7 @@ function [v] = VaRf(H,S0,R,sigma,CI)
     res = zeros(1000,1);
     for i=1:1000
        S = St(H,S0,R,sigma); % simulate stock prices
-       res(i) = S(end) - S(1);  % results of lost or gain
+       res(i) = (S(end) - S(1))/S(1);  % results of lost or gain
     end
     
     % sorts the results
