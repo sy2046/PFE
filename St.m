@@ -1,7 +1,5 @@
 function [S]=St(H,S0,R,sigma)
-    %% Function Name: St
-    % 
-    %% Description: Use fractional Brownian motion to simulate stock prices
+    %% Use fractional Brownian motion to simulate stock prices
     %
     %% Input:
     %   H is the hurst exponent of fractional Brownian motion, it'a real
