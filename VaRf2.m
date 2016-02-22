@@ -1,5 +1,5 @@
 function [v]=VaRf2(H,R,CI,Nd,S1,sigma1,W1,S2,sigma2,W2,rho)
-%% Calculate fractional VaR with Monte Carlo method
+%% Calculate fractional VaR with Monte Carlo method for two correlated stocks
     %
     %% Input:
     %   H is the hurst exponent of fractional Brownian motion, it'a real
