@@ -1,4 +1,4 @@
-function [v]=VaRf2(H,R,CI,Nd,S1,V1,W1,S2,V2,W2,rho)
+function [v]=VaRf2(H,R,CI,Nd,S1,sigma1,W1,S2,sigma2,W2,rho)
 %% Calculate fractional VaR with Monte Carlo method
     %
     %% Input:
@@ -9,7 +9,7 @@ function [v]=VaRf2(H,R,CI,Nd,S1,V1,W1,S2,V2,W2,rho)
     %
     %   R is the risk-free interest rate
     %
-    %   V1,V2 are the daily volatilities
+    %   sigma1,sigma2 are the daily volatilities
     %
     %   CI is the confidence interval
     %   
@@ -17,12 +17,19 @@ function [v]=VaRf2(H,R,CI,Nd,S1,V1,W1,S2,V2,W2,rho)
     %
     %   Nd is the number of days
     %
-    %   rho is the 
+    %   rho is the correlation between two stocks
     %% Output:
     %   v is the fractional VaR
     %   
     %% Last update: 2016/2/22
     %% Author: SUN,XU&ZHU
 
+    % Calculate fractional VaR for each stock
+    % use function VaRf()
+    VaR1 = VaRf(H,S1,R,sigma1,CI,W1,Nd);
+    VaR2 = VaRf(H,S2,R,sigma2,CI,W2,Nd);
+    
+    % Calculate VaR of the portfolio
+    v = sqrt(VaR1^2 + VaR2^2 + 2*rho*VaR1*VaR2);
 
 end
