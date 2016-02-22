@@ -1,4 +1,4 @@
-function [v] = VaRf(H,S0,R,sigma,CI)
+function [v] = VaRf(H,S0,R,sigma,CI,W,Nd)
     %% Calculate fractional VaR with Monte Carlo method
     %
     %% Input:
@@ -9,10 +9,13 @@ function [v] = VaRf(H,S0,R,sigma,CI)
     %
     %   R is the risk-free interest rate
     %
-    %   sigma is the volatility
+    %   sigma is the daily volatility
     %
     %   CI is the confidence interval
+    %   
+    %   W is the investiment value
     %
+    %   Nd is the number of days
     %% Output:
     %   v is the fractional VaR
     %   
@@ -33,5 +36,5 @@ function [v] = VaRf(H,S0,R,sigma,CI)
     index = round(1000*(1-CI));
     
     % return fractional VaR
-    v = res(index);
+    v = W*sqrt(Nd)*res(index);
 end
