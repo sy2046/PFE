@@ -1,4 +1,4 @@
-function [v] = VaRf(H,S0,R,sigma,CI,W,Nd)
+function [v] = VaRf(H,R,CI,Nd,S0,sigma,W)
     %% Calculate fractional VaR with Monte Carlo method
     %
     %% Input:
