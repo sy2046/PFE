@@ -1,7 +1,7 @@
 % test irs function
 
 % Hurst exponent
-H = 0.6;
+H = 0.5;
 
 % Length of fBm
 length = 1000;
@@ -18,9 +18,10 @@ end
 % Plot histogram
 n_bins = 20; 
 histogram(hurst_esti,n_bins, 'Normalization', 'probability'); 
-title('Estimating the Hurst Exponent with IRS Method ')
-xlabel('True value of the parameter H = 0.6')
+title('Estimer le param¨¨tre de Hurst avec IRS M¨¦thode ')
+xlabel('Vraie valeur du param¨¨tre H = 0.5')
 
 % Results
 m1 = mean(hurst_esti);
 v1 = var(hurst_esti);
+sigma = std2(hurst_esti);

@@ -19,7 +19,7 @@ function [v] = VaRf(H,R,CI,Nd,S0,sigma,W)
     %% Output:
     %   v is the fractional VaR
     %   
-    %% Last update: 2016/2/22
+    %% Last update: 2016/2/24
     %% Author: SUN,XU&ZHU
     
     % Calculate lost and gain with 1000 simulations of stock prices
@@ -35,6 +35,6 @@ function [v] = VaRf(H,R,CI,Nd,S0,sigma,W)
     % compute index for given confidence interval
     index = round(1000*(1-CI));
     
-    % return fractional VaR
-    v = W*sqrt(Nd)*res(index);
+    % return fractional VaR of Nd days
+    v = W * Nd^H * res(index);
 end

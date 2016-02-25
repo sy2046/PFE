@@ -2,7 +2,7 @@
 
 % Generate fBm with H=0.6
 rng default;
-H = 0.6;
+H = 0.7;
 len = 10000;
 
 % Estimating the Hurst Exponent with Wavelet Method
@@ -17,10 +17,11 @@ end
 n_bins = 21;
 
 % Hest(:,2) is the result of method 2(wavelet method) of wfbmesti function  
-histogram(Hest(:,2),n_bins); 
-title('Estimating the Hurst Exponent with Wavelet Method ')
-xlabel('True value of the parameter H = 0.6')
+histogram(Hest(:,2));
+title('Estimer le param¨¨tre de Hurst avec Wavelet M¨¦thode ')
+xlabel('Vraie valeur du param¨¨tre H = 0.7');
 
 % Results
 m1 = mean(Hest(:,2));
 v1 = var(Hest(:,2));
+sigma = std2(Hest(:,2));
