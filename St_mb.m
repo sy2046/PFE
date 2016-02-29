@@ -17,7 +17,7 @@ function [S]=St_mb(S0,R,sigma)
     
     %% Simulate fractional Brownian motion with Box&Muller
     
-    n = 1000;  % les points de grille
+    n = 500;  % les points de grille
     W=zeros(n,1);
     U1=rand(n,1);
     U2=rand(n,1);
@@ -32,7 +32,7 @@ function [S]=St_mb(S0,R,sigma)
     S = zeros(n,1);
     S(1) = S0;
     for t = 2:n
-        S(t)=S(1)*exp(sigma*W(t)*sqrt((T/n))+R*t*(T/n)-(sigma^2)/2*(t*(T/n)));
+        S(t)=S(1)*exp(sigma*W(t)+R*t*(T/n)-(sigma^2)/2*(t*(T/n)));
     end
 end
 
