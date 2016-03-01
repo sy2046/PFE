@@ -18,13 +18,14 @@ function [S]=St_mb(S0,R,sigma)
     %% Simulate fractional Brownian motion with Box&Muller
     
     n = 1000;  % les points de grille
+    Y=zeros(1,n);
     W=zeros(n,1);
     U1=rand(n,1);
     U2=rand(n,1);
     for t = 1:n
-       W(t) = sqrt(-2*log(U1(t,1)))*cos(2*pi*U2(t,1)); % A random variable with a standard normal distribution
+       Y(1,t) = sqrt(-2*log(U1(t,1)))*cos(2*pi*U2(t,1)); % A random variable with a standard normal distribution
     end    
-        
+    W=cumsum(Y);
  
 
     %% Calculate stock prices
@@ -32,7 +33,7 @@ function [S]=St_mb(S0,R,sigma)
     S = zeros(n,1);
     S(1) = S0;
     for t = 2:n
-        S(t)=S(1)*exp(sigma*W(t)*sqrt((T/n))+R*t*(T/n)-(sigma^2)/2*(t*(T/n)));
+        S(t)=S(1)*exp(sigma*W(t)+R*t*(T/n)-(sigma^2)/2*(t*(T/n)));
     end
 end
 
