@@ -1,8 +1,8 @@
 %% default parameters
 H = 0.06; % Hurst exponent
 R = 0.05; % risk free intrest
-Nd = 100; % number of days
-CI = 0.85; % confidence interval
+Nd = 1; % number of days
+CI = 0.95; % confidence interval
 
 %% test 1
 % paramaters for test1
@@ -29,8 +29,8 @@ v2 = VaRf2(H,R,CI,Nd,S1,sigma1,W1,S2,sigma2,W2,rho);
 %% test 3
 % paramaters for test3
 n = 3;
-MS = [20,0.3,30; 25,0.4,40; 15,0.2,20];
-MC = [1, 0.2, 0.3; 0.2, 1, 0.4; 0.3, 0.4, 1];
+MS = [20,0.04,200; 30,0.001,500; 25,0.015,300];
+MC = [1, 1, 0.57; 1, 1, 0.1; 0.57, 0.1, 1];
 
 % Test VaRfn()
 v3 = VaRfn(H,R,CI,Nd,n,MS,MC);

@@ -265,7 +265,8 @@ function VaRf_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 H = handles.input.hurst;
-result = VaRf(H,handles.input.taux,handles.input.CI,handles.input.Nd,handles.input.S0,handles.input.sigma,handles.input.W);
+sigma = handles.input.sigma/100;
+result = VaRf(H,handles.input.taux,handles.input.CI,handles.input.Nd,handles.input.S0,sigma,handles.input.W);
 set(handles.result, 'String', result);
 
 function result_Callback(hObject, eventdata, handles)

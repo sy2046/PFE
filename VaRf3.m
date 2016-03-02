@@ -22,7 +22,7 @@ function varargout = VaRf3(varargin)
 
 % Edit the above text to modify the response to help VaRf3
 
-% Last Modified by GUIDE v2.5 28-Feb-2016 23:40:10
+% Last Modified by GUIDE v2.5 01-Mar-2016 10:40:11
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -184,9 +184,9 @@ if isnan(W1)
     errordlg('Input must be a number','Error');
 end
 
-% Save the new W1 value
-haW1les.input.W1 = W1;
-guidata(hObject,haW1les)
+% % Save the new W1 value
+% haW1les.input.W1 = W1;
+% guidata(hObject,haW1les)
 
 % --- Executes during object creation, after setting all properties.
 function W1_CreateFcn(hObject, eventdata, handles)
@@ -216,9 +216,9 @@ if isnan(S2)
     errordlg('Input must be a number','Error');
 end
 
-% Save the new S2 value
-haS2les.input.S2 = S2;
-guidata(hObject,haS2les)
+% % Save the new S2 value
+% haS2les.input.S2 = S2;
+% guidata(hObject,haS2les)
 
 % --- Executes during object creation, after setting all properties.
 function S2_CreateFcn(hObject, eventdata, handles)
@@ -249,8 +249,8 @@ if isnan(sigma2)
 end
 
 % Save the new sigma2 value
-hasigma2les.input.sigma2 = sigma2;
-guidata(hObject,hasigma2les)
+% hasigma2les.input.sigma2 = sigma2;
+% guidata(hObject,hasigma2les)
 
 % --- Executes during object creation, after setting all properties.
 function sigma2_CreateFcn(hObject, eventdata, handles)
@@ -280,9 +280,9 @@ if isnan(W2)
     errordlg('Input must be a number','Error');
 end
 
-% Save the new W2 value
-haW2les.input.W2 = W2;
-guidata(hObject,haW2les)
+% % Save the new W2 value
+% haW2les.input.W2 = W2;
+% guidata(hObject,haW2les)
 
 % --- Executes during object creation, after setting all properties.
 function W2_CreateFcn(hObject, eventdata, handles)
@@ -312,9 +312,9 @@ if isnan(S3)
     errordlg('Input must be a number','Error');
 end
 
-% Save the new S3 value
-haS3les.input.S3 = S3;
-guidata(hObject,haS3les)
+% % Save the new S3 value
+% haS3les.input.S3 = S3;
+% guidata(hObject,haS3les)
 
 % --- Executes during object creation, after setting all properties.
 function S3_CreateFcn(hObject, eventdata, handles)
@@ -345,8 +345,8 @@ if isnan(sigma3)
 end
 
 % Save the new sigma3 value
-hasigma3les.input.sigma3 = sigma3;
-guidata(hObject,hasigma3les)
+% hasigma3les.input.sigma3 = sigma3;
+% guidata(hObject,hasigma3les)
 
 % --- Executes during object creation, after setting all properties.
 function sigma3_CreateFcn(hObject, eventdata, handles)
@@ -408,9 +408,9 @@ if isnan(hurst)
     errordlg('Input must be a number','Error');
 end
 
-% Save the new hurst value
-handles.input.hurst = hurst;
-guidata(hObject,handles)
+% % Save the new hurst value
+% handles.input.hurst = hurst;
+% guidata(hObject,handles)
 
 % --- Executes during object creation, after setting all properties.
 function hurst_CreateFcn(hObject, eventdata, handles)
@@ -440,9 +440,9 @@ if isnan(taux)
     errordlg('Input must be a number','Error');
 end
 
-% Save the new taux value
-handles.input.taux = taux;
-guidata(hObject,handles)
+% % Save the new taux value
+% handles.input.taux = taux;
+% guidata(hObject,handles)
 
 % --- Executes during object creation, after setting all properties.
 function taux_CreateFcn(hObject, eventdata, handles)
@@ -472,9 +472,9 @@ if isnan(CI)
     errordlg('Input must be a number','Error');
 end
 
-% Save the new CI value
-handles.input.CI = CI;
-guidata(hObject,handles)
+% % Save the new CI value
+% handles.input.CI = CI;
+% guidata(hObject,handles)
 
 % --- Executes during object creation, after setting all properties.
 function CI_CreateFcn(hObject, eventdata, handles)
@@ -559,14 +559,16 @@ global rho2;
 global rho3;
 H = hurst;
 R = taux;
-MS(:,1) = [S1,sigma1,W1];
-MS(:,2) = [S2,sigma2,W2];
-MS(:,3) = [S3,sigma3,W3];
+MS(1,:) = [S1,sigma1/100,W1];
+MS(2,:) = [S2,sigma2/100,W2];
+MS(3,:) = [S3,sigma3/100,W3];
 MC(:,1) = [1,rho1,rho3];
 MC(:,2) = [rho1,1,rho2];
 MC(:,3) = [rho3,rho2,1];
 result = VaRfn(H,R,CI,Nd,n,MS,MC);
+montant = W1 + W2 + W3;
 handles = guihandles(gcf);
+set(handles.montant, 'String', montant);
 set(handles.varf3, 'String', result);
 
 
@@ -607,9 +609,9 @@ if isnan(rho2)
     errordlg('Input must be a number','Error');
 end
 
-% Save the new rho2 value
-harho2les.input.rho2 = rho2;
-guidata(hObject,harho2les)
+% % Save the new rho2 value
+% harho2les.input.rho2 = rho2;
+% guidata(hObject,harho2les)
 
 % --- Executes during object creation, after setting all properties.
 function rho2_CreateFcn(hObject, eventdata, handles)
@@ -639,9 +641,9 @@ if isnan(rho3)
     errordlg('Input must be a number','Error');
 end
 
-% Save the new rho3 value
-harho3les.input.rho3 = rho3;
-guidata(hObject,harho3les)
+% % Save the new rho3 value
+% harho3les.input.rho3 = rho3;
+% guidata(hObject,harho3les)
 
 % --- Executes during object creation, after setting all properties.
 function rho3_CreateFcn(hObject, eventdata, handles)
@@ -678,3 +680,26 @@ function uipanel4_CreateFcn(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 guidata(hObject, handles)
+
+
+
+function montant_Callback(hObject, eventdata, handles)
+% hObject    handle to montant (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of montant as text
+%        str2double(get(hObject,'String')) returns contents of montant as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function montant_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to montant (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
