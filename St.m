@@ -34,6 +34,6 @@ function [S]=St(H,S0,R,sigma)
     S = zeros(n,1);
     S(1) = S0;
     for t = 2:n
-        S(t)=S(1)*exp(sigma*W(t)+R*t*(T/n)-(sigma^2)/2*(t*(T/n))^(2*H));
+        S(t)=S(1)*exp(sigma*W(t-1)+R*(t-1)*(T/n)-(sigma^2)/2*((t-1)*(T/n))^(2*H));
     end
 end

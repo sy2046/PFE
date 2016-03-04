@@ -27,7 +27,7 @@ function [v] = VaRf(H,R,CI,Nd,S0,sigma,W)
     T = 1; % VaR de 1 jour
     for i=1:1000
        S = St(H,S0,R,sigma); % simulate stock prices
-       res(i) = (S(1+T) - S(1))/S(1);  % results of lost or gain
+       res(i) = (S(end) - S(1))/S(1);  % results of lost or gain
     end
     
     % sorts the results
