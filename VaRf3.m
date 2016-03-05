@@ -22,7 +22,7 @@ function varargout = VaRf3(varargin)
 
 % Edit the above text to modify the response to help VaRf3
 
-% Last Modified by GUIDE v2.5 01-Mar-2016 10:40:11
+% Last Modified by GUIDE v2.5 04-Mar-2016 22:54:14
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -557,7 +557,10 @@ global W3;
 global rho1;
 global rho2;
 global rho3;
-H = hurst;
+global hurst1;
+global hurst2;
+global hurst3;
+H = [hurst1,hurst2,hurst3];
 R = taux;
 MS(1,:) = [S1,sigma1/100,W1];
 MS(2,:) = [S2,sigma2/100,W2];
@@ -695,6 +698,90 @@ function montant_Callback(hObject, eventdata, handles)
 % --- Executes during object creation, after setting all properties.
 function montant_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to montant (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function hurst1_Callback(hObject, eventdata, handles)
+% hObject    handle to hurst1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of hurst1 as text
+%        str2double(get(hObject,'String')) returns contents of hurst1 as a double
+global hurst1;
+hurst1 = str2double(get(hObject, 'String'));
+if isnan(hurst1)
+    set(hObject, 'String', 0);
+    errordlg('Input must be a number','Error');
+end
+
+% --- Executes during object creation, after setting all properties.
+function hurst1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to hurst1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function hurst2_Callback(hObject, eventdata, handles)
+% hObject    handle to hurst2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of hurst2 as text
+%        str2double(get(hObject,'String')) returns contents of hurst2 as a double
+global hurst2;
+hurst2 = str2double(get(hObject, 'String'));
+if isnan(hurst2)
+    set(hObject, 'String', 0);
+    errordlg('Input must be a number','Error');
+end
+
+% --- Executes during object creation, after setting all properties.
+function hurst2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to hurst2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function hurst3_Callback(hObject, eventdata, handles)
+% hObject    handle to hurst3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of hurst3 as text
+%        str2double(get(hObject,'String')) returns contents of hurst3 as a double
+global hurst3;
+hurst3 = str2double(get(hObject, 'String'));
+if isnan(hurst3)
+    set(hObject, 'String', 0);
+    errordlg('Input must be a number','Error');
+end
+
+% --- Executes during object creation, after setting all properties.
+function hurst3_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to hurst3 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 

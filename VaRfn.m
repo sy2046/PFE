@@ -38,7 +38,7 @@ function [v] = VaRfn(H,R,CI,Nd,n,MS,MC)
     % Use function VaRf() to calculate fractional VaR for each stock
     Vars = zeros(n,1);
     for i = 1:n
-        Vars(i) = VaRf(H,R,CI,Nd,S(i),sigma(i),W(i));
+        Vars(i) = VaRf(H(i),R,CI,Nd,S(i),sigma(i),W(i));
     end
     
     % Calculate VaR of the portfolio

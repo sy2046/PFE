@@ -112,7 +112,8 @@ function inputR_Callback(hObject, eventdata, handles)
 
 % Hints: get(hObject,'String') returns contents of inputR as text
 %        str2double(get(hObject,'String')) returns contents of inputR as a double
-taux = str2double(get(hObject, 'String'));
+tauxanuelle = str2double(get(hObject, 'String'));
+taux = tauxanuelle/360;
 if isnan(taux)
     set(hObject, 'String', 0);
     errordlg('Input must be a number','Error');
